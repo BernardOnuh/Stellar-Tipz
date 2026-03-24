@@ -29,7 +29,7 @@ mod test;
 use soroban_sdk::{contract, contractimpl, Address, Env, String, Vec};
 
 use crate::errors::ContractError;
-use crate::types::{ContractStats, LeaderboardEntry, Profile, Tip};
+use crate::types::{ContractStats, CreditTier, LeaderboardEntry, Profile, Tip};
 
 #[contract]
 pub struct TipzContract;
@@ -153,6 +153,18 @@ impl TipzContract {
     pub fn calculate_credit_score(_env: Env, _address: Address) -> Result<u32, ContractError> {
         // TODO: Implement in issue #13 - Credit Score Calculation
         Err(ContractError::NotInitialized)
+    }
+
+    /// Return the current credit score and tier for a registered profile.
+    ///
+    /// The score (0–100) is derived from the profile's tip volume, X metrics,
+    /// and account age.  Newly registered profiles start at **40** (Silver).
+    ///
+    /// # Errors
+    /// Returns [`ContractError::NotRegistered`] when no profile exists for
+    /// `address`.
+    pub fn get_credit_tier(env: Env, address: Address) -> Result<(u32, CreditTier), ContractError> {
+        credit::get_credit_tier(&env, &address)
     }
 
     // ──────────────────────────────────────────────

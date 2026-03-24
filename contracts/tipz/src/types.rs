@@ -24,7 +24,7 @@ pub struct Profile {
     pub x_posts: u32,
     /// X reply count (set by admin)
     pub x_replies: u32,
-    /// Credit score (0-1000)
+    /// Credit score (0-100)
     pub credit_score: u32,
     /// Lifetime tips received (in stroops)
     pub total_tips_received: i128,
@@ -68,6 +68,25 @@ pub struct LeaderboardEntry {
     pub total_tips_received: i128,
     /// Current credit score
     pub credit_score: u32,
+}
+
+/// Credit tier derived from a creator's on-chain credit score (0–100).
+///
+/// | Tier    | Score range | Description                         |
+/// |---------|-------------|-------------------------------------|
+/// | New     | 0 – 19      | No activity yet                     |
+/// | Bronze  | 20 – 39     | Early-stage creator                 |
+/// | Silver  | 40 – 59     | Default for newly registered profiles|
+/// | Gold    | 60 – 79     | Established creator                  |
+/// | Diamond | 80 – 100    | Elite creator                        |
+#[contracttype]
+#[derive(Clone, Debug, PartialEq)]
+pub enum CreditTier {
+    New,
+    Bronze,
+    Silver,
+    Gold,
+    Diamond,
 }
 
 /// Global contract statistics.
