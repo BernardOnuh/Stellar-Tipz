@@ -8,9 +8,11 @@ import PageTransition from './components/shared/PageTransition';
 import LandingPage from './features/landing/LandingPage';
 
 // Feature pages - will be implemented in frontend issues
-// import ProfilePage from './features/profile/ProfilePage';
+import DashboardPage from './features/dashboard/DashboardPage';
+import ProfilePage from './features/profile/ProfilePage';
+import ProtectedRoute from './components/shared/ProtectedRoute';
+import ToastContainer from './components/shared/ToastContainer';
 // import TipPage from './features/tipping/TipPage';
-// import DashboardPage from './features/dashboard/DashboardPage';
 // import LeaderboardPage from './features/leaderboard/LeaderboardPage';
 
 const App: React.FC = () => {
@@ -31,6 +33,7 @@ const App: React.FC = () => {
           </Routes>
         </div>
         <Footer />
+        <ToastContainer />
       </div>
     </BrowserRouter>
   );
