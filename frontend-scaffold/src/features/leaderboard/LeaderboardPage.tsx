@@ -1,4 +1,6 @@
 import React from "react";
+import React, { useMemo, useState } from "react";
+import { Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Trophy } from "lucide-react";
 
@@ -10,6 +12,7 @@ import Card from "@/components/ui/Card";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import type { LeaderboardEntry } from "@/types";
 import { mockLeaderboard } from "../mockData";
+import Podium from "./Podium";
 
 const PodiumCard: React.FC<{
   entry: LeaderboardEntry;
@@ -107,6 +110,9 @@ const LeaderboardPage: React.FC = () => {
             </div>
           )}
         </div>
+        </Card>
+
+        <Podium creators={mockLeaderboard.slice(0, 3)} />
       </section>
 
       <section aria-label="Additional leaderboard rankings">
