@@ -11,6 +11,7 @@ import Card from "../../components/ui/Card";
 import EmptyState from "../../components/ui/EmptyState";
 import Pagination from "../../components/ui/Pagination";
 import { mockProfile, mockTips } from "../mockData";
+import EarningsChart from "./EarningsChart";
 
 const DashboardPage: React.FC = () => {
   const totalPages = Math.max(1, Math.ceil(mockTips.length / 3));
@@ -50,13 +51,18 @@ const DashboardPage: React.FC = () => {
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <Card className="space-y-4" padding="lg">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-black uppercase">Recent earnings</h2>
-            <Link to="/profile" className="text-sm font-black uppercase underline">
-              View full profile
-            </Link>
-          </div>
+        <div className="space-y-6">
+          <Card padding="lg">
+            <EarningsChart tips={mockTips} />
+          </Card>
+
+          <Card className="space-y-4" padding="lg">
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-2xl font-black uppercase">Recent earnings</h2>
+              <Link to="/profile" className="text-sm font-black uppercase underline">
+                View full profile
+              </Link>
+            </div>
 
           {mockTips.length === 0 ? (
             <EmptyState
@@ -74,6 +80,7 @@ const DashboardPage: React.FC = () => {
 
           <Pagination currentPage={1} totalPages={totalPages} onPageChange={() => {}} />
         </Card>
+      </div>
 
         <div className="space-y-6">
           <Card className="space-y-4" padding="lg">
