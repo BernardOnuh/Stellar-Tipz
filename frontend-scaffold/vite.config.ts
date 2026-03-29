@@ -31,4 +31,9 @@ export default defineConfig({
       scss: {},
     },
   },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: [],
+  },
 });
