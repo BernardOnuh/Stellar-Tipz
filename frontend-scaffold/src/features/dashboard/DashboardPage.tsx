@@ -25,7 +25,6 @@ const DashboardPage: React.FC = () => {
   const { connected } = useWalletStore();
   const { profile, tips, stats, loading, error, refetch } = useDashboard();
 
-
   if (!connected) {
     return (
       <PageContainer maxWidth="xl" className="space-y-8 py-10">
