@@ -15,8 +15,6 @@ dist/
 *.wasm
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # IDE
@@ -28,3 +26,4 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+config.bat
